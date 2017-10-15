@@ -42,7 +42,7 @@ function storeName(name){
 	let config = document.querySelector("#config");
 	if(guuh == true){
 		console.log(guuh);
-		config.innerHTML = `<input type="text" id="url" placeholder="url"/></br><input type="text" id="song" placeholder="name your song"/>
+		config.innerHTML = `<input type="text" id="url" placeholder="embeding"/></br><input type="text" id="song" placeholder="name your song"/>
 	    <input type="submit" value="store" id="button" onclick='store(document.querySelector("#url").value,document.querySelector("#song").value)'>`
 		guuh = false;
 	}
