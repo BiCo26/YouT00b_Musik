@@ -30,21 +30,21 @@ function store(url,song){
 	}
 	ref.push(data);
 }
-// function storeName(name){
-// 	// create parent directory in fire base using name
-// 	global = `${name}`
-// 	console.log(global);
+function storeName(name){
+	// create parent directory in fire base using name
+	global = `${name}`
+	console.log(global);
 
-// 	// toggle between create and log in
-// 	let guuh = true
-// 	let config = document.querySelector("#config");
-// 	if(guuh == true){
-// 		console.log(guuh);
-// 		config.innerHTML = `<input type="text" id="url" placeholder="embeding"/><input type="text" id="song" placeholder="name your song"/></br>
-// 	    <input type="submit" value="store" id="button" onclick='store(document.querySelector("#url").value,document.querySelector("#song").value)'>`
-// 		guuh = false;
-// 	}
-// }
+	// toggle between create and log in
+	let guuh = true
+	let config = document.querySelector("#config");
+	if(guuh == true){
+		console.log(guuh);
+		config.innerHTML = `<input type="text" id="url" placeholder="embeding"/><input type="text" id="song" placeholder="name your song"/></br>
+	    <input type="submit" value="store" id="button" onclick='store(document.querySelector("#url").value,document.querySelector("#song").value)'>`
+		guuh = false;
+	}
+}
 
 let block = document.querySelector("#block");
 let listers = document.querySelector("#listers");
