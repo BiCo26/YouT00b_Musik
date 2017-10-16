@@ -36,31 +36,49 @@ function storeName(name){
 	console.log(global);
 
 	// toggle between create and log in
-	let guuh = true
+	let lock = true
 	let config = document.querySelector("#config");
-	if(guuh == true){
-		console.log(guuh);
+	if(lock == true){
+		console.log(lock);
 		config.innerHTML = `<input type="text" id="url" placeholder="embeding"/><input type="text" id="song" placeholder="name your song"/></br>
 	    <input type="submit" value="store" id="button" onclick='store(document.querySelector("#url").value,document.querySelector("#song").value)'>`
-		guuh = false;
+		lock = false;
 	}
 }
 
 let block = document.querySelector("#block");
-let listers = document.querySelector("#listers");
-let singles = document.querySelector("#singles");
-let toggle = document.querySelector("#toggle");
-
+let lock = true;
 function show(){
-	if(listers.style.display == "none"){
-		singles.style.display = "none";
-		listers.style.display = "inline";
+	// // toggle for hard coded music samples
+	// if(listers.style.display == "none"){
+	// 	singles.style.display = "none";
+	// 	listers.style.display = "inline";
+	// 	toggle.innerText = "Click for singles";
+	// }
+	// else{
+	// 	singles.style.display = "inline";
+	// 	listers.style.display = "none";
+	// 	toggle.innerText = "Click for lists";
+	// }
+
+	// toggle for query fields
+
+	let listers = document.querySelector("#listers");
+	let singles = document.querySelector("#singles");
+	let toggle = document.querySelector("#toggle");
+	let options = document.querySelector("#options");
+
+	if(lock == true){
+		lock = false;
+		console.log("if: "+lock);
+		options.innerHTML = `<div id="listers"></div>`;
 		toggle.innerText = "Click for singles";
 	}
-	else{
-		singles.style.display = "inline";
-		listers.style.display = "none";
-		toggle.innerText = "Click for lists";
+	else if(lock == false){
+		lock = true;
+		console.log("else: "+lock);
+		options.innerHTML = `<div id="singles"></div>`;
+		toggle.innerText = "Click for lists";		
 	}
 }
 function playlist(list){
