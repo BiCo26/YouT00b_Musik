@@ -11,42 +11,40 @@ firebase.initializeApp(config);
 console.log("firebase log: "+config);
 
 let database = firebase.database();
-
-// global name
 let global = "";
+// global name
 // retrieving data
 function store(url,song){
 	console.log("firebase 2nd log: "+firebase);
-	console.log("first log: "+url);
-	console.log(`log in store ${global}`);
-	console.log("Non query log "+global)
+	// console.log("first log: "+url);
+	// console.log(`log in store ${global}`);
+	// console.log("Non query log "+global)
 	// filter out watch id from url
 
 
 	// send watch id into storage
 	let ref = database.ref(global);
 	let data = {
-		// test: `${global}`
-		name: `${global}/${song}`,
-		url: `${global}/${url}`
+		url: `${url}`,
+		song: `${song}`
 	}
 	ref.push(data);
 }
-function storeName(name){
-	// create parent directory in fire base using name
-	global = `${name}`
-	console.log(global);
+// function storeName(name){
+// 	// create parent directory in fire base using name
+// 	global = `${name}`
+// 	console.log(global);
 
-	// toggle between create and log in
-	let guuh = true
-	let config = document.querySelector("#config");
-	if(guuh == true){
-		console.log(guuh);
-		config.innerHTML = `<input type="text" id="url" placeholder="embeding"/><input type="text" id="song" placeholder="name your song"/></br>
-	    <input type="submit" value="store" id="button" onclick='store(document.querySelector("#url").value,document.querySelector("#song").value)'>`
-		guuh = false;
-	}
-}
+// 	// toggle between create and log in
+// 	let guuh = true
+// 	let config = document.querySelector("#config");
+// 	if(guuh == true){
+// 		console.log(guuh);
+// 		config.innerHTML = `<input type="text" id="url" placeholder="embeding"/><input type="text" id="song" placeholder="name your song"/></br>
+// 	    <input type="submit" value="store" id="button" onclick='store(document.querySelector("#url").value,document.querySelector("#song").value)'>`
+// 		guuh = false;
+// 	}
+// }
 
 let block = document.querySelector("#block");
 let listers = document.querySelector("#listers");
