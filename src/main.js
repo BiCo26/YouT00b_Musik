@@ -11,8 +11,9 @@ firebase.initializeApp(config);
 console.log("firebase log: "+config);
 
 let database = firebase.database();
-let global = "";
+
 // global name
+let global = "";
 // retrieving data
 function store(url,song){
 	console.log("firebase 2nd log: "+firebase);
@@ -30,6 +31,8 @@ function store(url,song){
 	}
 	ref.push(data);
 }
+
+// stores database name into global
 function storeName(name){
 	// create parent directory in fire base using name
 	global = `${name}`
@@ -46,6 +49,7 @@ function storeName(name){
 	}
 }
 
+// toggle buttons between list and single 
 let block = document.querySelector("#block");
 let lock = true;
 function show(){
@@ -61,8 +65,7 @@ function show(){
 	// 	toggle.innerText = "Click for lists";
 	// }
 
-	// toggle for query fields
-
+	// toggle for button fields
 	let listers = document.querySelector("#listers");
 	let singles = document.querySelector("#singles");
 	let toggle = document.querySelector("#toggle");
@@ -81,9 +84,11 @@ function show(){
 		toggle.innerText = "Click for lists";		
 	}
 }
+
+// youtube video link templates
 function playlist(list){
 	block.innerHTML = `<iframe width="700" height="550" src="https://www.youtube.com/embed/_vS0_1tdqMI?rel=0&amp;autoplay=1&amp;loop=1&amp;list=${list}"frameborder="0" allowfullscreen></iframe>`
 }
 function playsingles(single){
-	block.innerHTML = `<iframe width="700" height="500" src="https://www.youtube.com/embed/${single}?rel=0&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>`
+	block.innerHTML = `<iframe width="700" height="550" src="https://www.youtube.com/embed/${single}?rel=0&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>`
 }
