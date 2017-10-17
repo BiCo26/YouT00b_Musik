@@ -17,9 +17,6 @@ let global = "";
 // retrieving data
 function store(url,song){
 	console.log("firebase 2nd log: "+firebase);
-	// console.log("first log: "+url);
-	// console.log(`log in store ${global}`);
-	// console.log("Non query log "+global)
 	// filter out watch id from url
 
 
@@ -38,6 +35,9 @@ function storeName(name){
 	global = `${name}`
 	console.log(global);
 
+	let ref = database.ref(global);
+	ref.on('value', gotData, errData);
+
 	// toggle between create and log in
 	let lock = true
 	let config = document.querySelector("#config");
@@ -47,6 +47,29 @@ function storeName(name){
 	    <input type="submit" value="store" id="button" onclick='store(document.querySelector("#url").value,document.querySelector("#song").value)'>`
 		lock = false;
 	}
+}
+
+function gotData(data){
+	console.log(data.val());
+	let names = data.val();
+	let keys = Object.keys(names);
+	console.log(keys);
+	let singles = document.querySelector("#singles");
+	let listers = document.querySelector("#listers");
+	for(i=0;i<3;i++){
+		let k = keys[i];
+		// console.log(k);
+		let url = names[k].url;
+		let song = names[k].song;
+		console.log(url,song);
+		// listers.innerHTML = ``;
+		singles.innerHTML += `<button onclick="playsingles('${url}')">${song}</button>`;
+		// singles.innerHTML = `<button onclick="playsingles('${i}')">${i}</button>`;
+
+	}
+}
+function errData(data){
+	console.log("ERROR: "+data);
 }
 
 // toggle buttons between list and single 
