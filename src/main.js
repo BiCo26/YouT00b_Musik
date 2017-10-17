@@ -35,6 +35,7 @@ function storeName(name){
 	global = `${name}`
 	console.log(global);
 
+
 	let ref = database.ref(global);
 	ref.on('value', gotData, errData);
 
@@ -52,11 +53,12 @@ function storeName(name){
 function gotData(data){
 	console.log(data.val());
 	let names = data.val();
+	document.querySelector("#intro").innerText += `, ${global}`;
 	let keys = Object.keys(names);
 	console.log(keys);
 	let singles = document.querySelector("#singles");
 	let listers = document.querySelector("#listers");
-	for(i=0;i<3;i++){
+	for(i=0;i<keys.length;i++){
 		let k = keys[i];
 		// console.log(k);
 		let url = names[k].url;
@@ -65,7 +67,11 @@ function gotData(data){
 		// listers.innerHTML = ``;
 		singles.innerHTML += `<button onclick="playsingles('${url}')">${song}</button>`;
 		// singles.innerHTML = `<button onclick="playsingles('${i}')">${i}</button>`;
-
+		singles.className = 'sing';
+	}
+	let sing = document.querySelector('.sing');
+	for(i=0; i<sing.length-1; i++){
+		sing[i].remove();
 	}
 }
 function errData(data){
