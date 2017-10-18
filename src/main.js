@@ -16,6 +16,7 @@ let database = firebase.database();
 let global = "";
 // retrieving data
 function store(url,song){
+	document.querySelector('#singles').innerHTML = "";
 	console.log("firebase 2nd log: "+firebase);
 	// filter out watch id from url
 
@@ -53,12 +54,20 @@ function storeName(name){
 function gotData(data){
 	console.log(data.val());
 	let names = data.val();
-	document.querySelector("#intro").innerText += `, ${global}`;
+	let intro = document.querySelector("#intro");
+	intro.innerText = "";
+	intro.innerText += `Welcome, ${global}`;
+
 	let keys = Object.keys(names);
 	console.log(keys);
 	let singles = document.querySelector("#singles");
 	let listers = document.querySelector("#listers");
-	for(i=0;i<keys.length;i++){
+	// singles.className = 'sing';
+	// let sing = document.querySelector('.sing');
+	// for(let i=0; i<sing.length; i++){
+	// 	sing[i].remove();
+	// }
+	for(let i=0; i<keys.length; i++){
 		let k = keys[i];
 		// console.log(k);
 		let url = names[k].url;
@@ -67,12 +76,8 @@ function gotData(data){
 		// listers.innerHTML = ``;
 		singles.innerHTML += `<button onclick="playsingles('${url}')">${song}</button>`;
 		// singles.innerHTML = `<button onclick="playsingles('${i}')">${i}</button>`;
-		singles.className = 'sing';
 	}
-	let sing = document.querySelector('.sing');
-	for(i=0; i<sing.length-1; i++){
-		sing[i].remove();
-	}
+
 }
 function errData(data){
 	console.log("ERROR: "+data);
