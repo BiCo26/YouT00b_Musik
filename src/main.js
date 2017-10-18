@@ -88,35 +88,37 @@ let block = document.querySelector("#block");
 let lock = true;
 function show(){
 	// // toggle for hard coded music samples
-	// if(listers.style.display == "none"){
-	// 	singles.style.display = "none";
-	// 	listers.style.display = "inline";
-	// 	toggle.innerText = "Click for singles";
-	// }
-	// else{
-	// 	singles.style.display = "inline";
-	// 	listers.style.display = "none";
-	// 	toggle.innerText = "Click for lists";
-	// }
+
 
 	// toggle for button fields
 	let listers = document.querySelector("#listers");
 	let singles = document.querySelector("#singles");
 	let toggle = document.querySelector("#toggle");
-	let options = document.querySelector("#options");
+	// let options = document.querySelector("#options");
 
-	if(lock == true){
-		lock = false;
-		console.log("if: "+lock);
-		options.innerHTML = `<div id="listers"></div>`;
+	if(listers.style.display == "none"){
+		singles.style.display = "none";
+		listers.style.display = "inline";
 		toggle.innerText = "Click for singles";
 	}
-	else if(lock == false){
-		lock = true;
-		console.log("else: "+lock);
-		options.innerHTML = `<div id="singles"></div>`;
-		toggle.innerText = "Click for lists";		
+	else{
+		singles.style.display = "inline";
+		listers.style.display = "none";
+		toggle.innerText = "Click for lists";
 	}
+
+	// if(lock == true){
+	// 	lock = false;
+	// 	console.log("if: "+lock);
+	// 	options.innerHTML = `<div id="listers"></div>`;
+	// 	toggle.innerText = "Click for singles";
+	// }
+	// else if(lock == false){
+	// 	lock = true;
+	// 	console.log("else: "+lock);
+	// 	options.innerHTML = `<div id="singles"></div>`;
+	// 	toggle.innerText = "Click for lists";		
+	// }
 }
 
 // youtube video link templates
