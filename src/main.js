@@ -19,7 +19,8 @@ function store(url,song){
 	document.querySelector('#singles').innerHTML = "";
 	console.log("firebase 2nd log: "+firebase);
 	// filter out watch id from url
-
+	url = url.substr(32, 42);
+	console.log("embed: "+url);
 
 	// send watch id into storage
 	let ref = database.ref(global);
@@ -62,11 +63,6 @@ function gotData(data){
 	console.log(keys);
 	let singles = document.querySelector("#singles");
 	let listers = document.querySelector("#listers");
-	// singles.className = 'sing';
-	// let sing = document.querySelector('.sing');
-	// for(let i=0; i<sing.length; i++){
-	// 	sing[i].remove();
-	// }
 	for(let i=0; i<keys.length; i++){
 		let k = keys[i];
 		// console.log(k);
@@ -106,19 +102,6 @@ function show(){
 		listers.style.display = "none";
 		toggle.innerText = "Click for lists";
 	}
-
-	// if(lock == true){
-	// 	lock = false;
-	// 	console.log("if: "+lock);
-	// 	options.innerHTML = `<div id="listers"></div>`;
-	// 	toggle.innerText = "Click for singles";
-	// }
-	// else if(lock == false){
-	// 	lock = true;
-	// 	console.log("else: "+lock);
-	// 	options.innerHTML = `<div id="singles"></div>`;
-	// 	toggle.innerText = "Click for lists";		
-	// }
 }
 
 // youtube video link templates
